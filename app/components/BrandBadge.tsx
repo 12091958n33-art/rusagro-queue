@@ -1,14 +1,17 @@
 export default function BrandBadge({ className = "" }: { className?: string }) {
   return (
-    <span
-      className={`inline-flex items-center justify-center rounded-sm bg-[#2a418d] text-white ${className}`}
+    <svg
+      viewBox="0 0 40 40"
+      className={className}
+      fill="none"
+      aria-hidden="true"
     >
-      <svg viewBox="0 0 24 24" fill="none" className="h-[60%] w-[60%]">
-        <path
-          d="M12 2c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM12 16c1.5 2 1.5 4 0 6-1.5-2-1.5-4 0-6ZM2 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0ZM16 12c2-1.5 4-1.5 6 0-2 1.5-4 1.5-6 0ZM5.6 5.6c2.2.6 3.6 2 4.2 4.2-2.2-.6-3.6-2-4.2-4.2ZM14.2 14.2c2.2.6 3.6 2 4.2 4.2-2.2-.6-3.6-2-4.2-4.2ZM18.4 5.6c-.6 2.2-2 3.6-4.2 4.2.6-2.2 2-3.6 4.2-4.2ZM9.8 14.2c-.6 2.2-2 3.6-4.2 4.2.6-2.2 2-3.6 4.2-4.2Z"
-          fill="currentColor"
-        />
-      </svg>
-    </span>
+      <g stroke="#8a8a8a" strokeWidth="3.2" strokeLinecap="square">
+        <line x1="4" y1="36" x2="4" y2="26" />
+        <line x1="12" y1="36" x2="12" y2="18" />
+        <line x1="20" y1="36" x2="20" y2="10" />
+        <line x1="28" y1="36" x2="28" y2="4" />
+      </g>
+    </svg>
   );
 }

@@ -24,12 +24,12 @@ export default async function Header() {
     <header className="border-b border-zinc-200 bg-white">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <BrandBadge className="h-8 w-8" />
+          <BrandBadge className="h-9 w-9" />
           <span className="flex flex-col leading-none">
-            <span className="text-lg font-extrabold uppercase tracking-tight text-zinc-900">
+            <span className="text-xl font-black uppercase tracking-tight text-zinc-600">
               Русагро
             </span>
-            <span className="text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+            <span className="text-[11px] font-medium text-zinc-500">
               Приём свёклы
             </span>
           </span>
