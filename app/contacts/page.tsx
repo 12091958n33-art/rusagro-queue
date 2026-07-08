@@ -1,4 +1,6 @@
-const MAP_QUERY = "Знаменский сахарный завод, Тамбовская область, рп Знаменка, Рабочая улица, 2";
+// Точные координаты ОАО «Знаменский сахарный завод» (Рабочая ул., 2)
+const FACTORY_LON = 41.508911;
+const FACTORY_LAT = 52.430745;
 
 export default function ContactsPage() {
   return (
@@ -44,7 +46,7 @@ export default function ContactsPage() {
         <div className="overflow-hidden rounded-md border border-zinc-200">
           <iframe
             title="Карта — ООО «Русагро-Тамбов»"
-            src={`https://yandex.ru/map-widget/v1/?text=${encodeURIComponent(MAP_QUERY)}&z=16`}
+            src={`https://yandex.ru/map-widget/v1/?ll=${FACTORY_LON},${FACTORY_LAT}&z=17&pt=${FACTORY_LON},${FACTORY_LAT},pm2rdm`}
             className="h-full min-h-[260px] w-full"
             loading="lazy"
           />
