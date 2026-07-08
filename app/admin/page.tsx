@@ -1,5 +1,10 @@
 import { getSlotsByDate, getAllEntriesByDate } from "@/app/lib/data";
-import { createSlot, deleteSlot, cancelEntry } from "@/app/lib/actions";
+import {
+  createSlot,
+  deleteSlot,
+  cancelEntry,
+  updateEntryStatus,
+} from "@/app/lib/actions";
 import { todayIso, generateTimeOptions, SLOT_DURATION_MINUTES } from "@/app/lib/types";
 import DateForm from "@/app/components/DateForm";
 import StatusBadge from "@/app/components/StatusBadge";
@@ -126,9 +131,10 @@ export default async function AdminPage({
                   <th className="px-4 py-2">Поставщик</th>
                   <th className="px-4 py-2">Телефон</th>
                   <th className="px-4 py-2">Номер</th>
-                  <th className="px-4 py-2">Тонн</th>
+                  <th className="px-4 py-2">Заявлено, т</th>
+                  <th className="px-4 py-2">Факт, т</th>
                   <th className="px-4 py-2">Статус</th>
-                  <th className="px-4 py-2"></th>
+                  <th className="px-4 py-2">Действия</th>
                 </tr>
               </thead>
               <tbody>
@@ -142,21 +148,90 @@ export default async function AdminPage({
                     <td className="px-4 py-3">{entry.vehiclePlate}</td>
                     <td className="px-4 py-3">{entry.volumeTons}</td>
                     <td className="px-4 py-3">
+                      {entry.actualWeightTons ?? "—"}
+                    </td>
+                    <td className="px-4 py-3">
                       <StatusBadge status={entry.status} />
                     </td>
                     <td className="px-4 py-3">
-                      {entry.status !== "CANCELLED" &&
-                        entry.status !== "DONE" && (
-                          <form action={cancelEntry}>
+                      <div className="flex flex-wrap items-center gap-2">
+                        {entry.status === "CONFIRMED" && (
+                          <form action={updateEntryStatus}>
                             <input type="hidden" name="id" value={entry.id} />
+                            <input
+                              type="hidden"
+                              name="status"
+                              value="ARRIVED"
+                            />
                             <button
                               type="submit"
-                              className="text-red-600 hover:underline"
+                              className="rounded-md bg-amber-600 px-2 py-1 text-xs text-white hover:bg-amber-700"
                             >
-                              Отменить
+                              Прибыл
                             </button>
                           </form>
                         )}
+                        {entry.status === "ARRIVED" && (
+                          <form action={updateEntryStatus}>
+                            <input type="hidden" name="id" value={entry.id} />
+                            <input
+                              type="hidden"
+                              name="status"
+                              value="WEIGHING"
+                            />
+                            <button
+                              type="submit"
+                              className="rounded-md bg-blue-600 px-2 py-1 text-xs text-white hover:bg-blue-700"
+                            >
+                              На весах
+                            </button>
+                          </form>
+                        )}
+                        {entry.status === "WEIGHING" && (
+                          <form
+                            action={updateEntryStatus}
+                            className="flex items-center gap-1"
+                          >
+                            <input type="hidden" name="id" value={entry.id} />
+                            <input
+                              type="hidden"
+                              name="status"
+                              value="DONE"
+                            />
+                            <input
+                              type="number"
+                              step="0.01"
+                              min="0"
+                              name="actualWeightTons"
+                              required
+                              placeholder="т"
+                              className="w-16 rounded-md border border-zinc-300 px-1.5 py-1 text-xs"
+                            />
+                            <button
+                              type="submit"
+                              className="rounded-md bg-green-700 px-2 py-1 text-xs text-white hover:bg-green-800"
+                            >
+                              Принято
+                            </button>
+                          </form>
+                        )}
+                        {entry.status !== "CANCELLED" &&
+                          entry.status !== "DONE" && (
+                            <form action={cancelEntry}>
+                              <input
+                                type="hidden"
+                                name="id"
+                                value={entry.id}
+                              />
+                              <button
+                                type="submit"
+                                className="text-xs text-red-600 hover:underline"
+                              >
+                                Отменить
+                              </button>
+                            </form>
+                          )}
+                      </div>
                     </td>
                   </tr>
                 ))}

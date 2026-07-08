@@ -28,6 +28,8 @@ export default function RootLayout({
     <html
       lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-density="comfortable"
+      suppressHydrationWarning
     >
       <head>
         <script
