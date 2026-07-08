@@ -30,3 +30,23 @@ export function todayIso(): string {
   const d = String(now.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
+
+export const SLOT_DURATION_MINUTES = 30;
+
+export function addMinutes(time: string, minutes: number): string {
+  const [h, m] = time.split(":").map(Number);
+  const total = (h * 60 + m + minutes + 24 * 60) % (24 * 60);
+  const hh = String(Math.floor(total / 60)).padStart(2, "0");
+  const mm = String(total % 60).padStart(2, "0");
+  return `${hh}:${mm}`;
+}
+
+export function generateTimeOptions(stepMinutes: number): string[] {
+  const options: string[] = [];
+  for (let m = 0; m < 24 * 60; m += stepMinutes) {
+    const hh = String(Math.floor(m / 60)).padStart(2, "0");
+    const mm = String(m % 60).padStart(2, "0");
+    options.push(`${hh}:${mm}`);
+  }
+  return options;
+}

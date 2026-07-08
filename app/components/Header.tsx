@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DensityToggle from "@/app/components/DensityToggle";
 
 const links = [
   { href: "/", label: "Главная" },
@@ -27,6 +28,9 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+        <div className="ml-auto">
+          <DensityToggle />
+        </div>
       </div>
     </header>
   );

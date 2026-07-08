@@ -1,8 +1,10 @@
 import { getSlotsByDate, getAllEntriesByDate } from "@/app/lib/data";
 import { createSlot, deleteSlot, cancelEntry } from "@/app/lib/actions";
-import { todayIso } from "@/app/lib/types";
+import { todayIso, generateTimeOptions, SLOT_DURATION_MINUTES } from "@/app/lib/types";
 import DateForm from "@/app/components/DateForm";
 import StatusBadge from "@/app/components/StatusBadge";
+
+const TIME_OPTIONS = generateTimeOptions(SLOT_DURATION_MINUTES);
 
 export default async function AdminPage({
   searchParams,
@@ -36,22 +38,24 @@ export default async function AdminPage({
         >
           <input type="hidden" name="date" value={date} />
           <div>
-            <label className="block text-xs text-zinc-600">Начало</label>
-            <input
-              type="time"
+            <label className="block text-xs text-zinc-600">
+              Время начала (слот — {SLOT_DURATION_MINUTES} мин)
+            </label>
+            <select
               name="startTime"
               required
-              className="rounded-md border border-zinc-300 px-2 py-1 text-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-zinc-600">Конец</label>
-            <input
-              type="time"
-              name="endTime"
-              required
-              className="rounded-md border border-zinc-300 px-2 py-1 text-sm"
-            />
+              defaultValue=""
+              className="rounded-md border border-zinc-300 px-2 py-1.5 text-sm"
+            >
+              <option value="" disabled>
+                Выберите время
+              </option>
+              {TIME_OPTIONS.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-xs text-zinc-600">

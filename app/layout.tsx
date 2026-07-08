@@ -28,6 +28,13 @@ export default function RootLayout({
       lang="ru"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{document.documentElement.dataset.density=localStorage.getItem("density")||"comfortable"}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-zinc-50">
         <Header />
         <main className="flex-1">{children}</main>

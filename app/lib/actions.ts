@@ -2,7 +2,7 @@
 
 import { prisma } from "@/app/lib/db";
 import { revalidatePath } from "next/cache";
-import type { EntryStatus } from "@/app/lib/types";
+import { addMinutes, SLOT_DURATION_MINUTES, type EntryStatus } from "@/app/lib/types";
 
 function str(formData: FormData, key: string): string {
   const value = formData.get(key);
@@ -12,12 +12,13 @@ function str(formData: FormData, key: string): string {
 export async function createSlot(formData: FormData) {
   const date = str(formData, "date");
   const startTime = str(formData, "startTime");
-  const endTime = str(formData, "endTime");
   const capacity = Number(str(formData, "capacity"));
 
-  if (!date || !startTime || !endTime || !capacity || capacity < 1) {
+  if (!date || !startTime || !capacity || capacity < 1) {
     throw new Error("Заполните все поля слота корректно");
   }
+
+  const endTime = addMinutes(startTime, SLOT_DURATION_MINUTES);
 
   await prisma.slot.create({
     data: { date, startTime, endTime, capacity },
