@@ -22,7 +22,7 @@ export default function DensityToggle() {
   }, [density]);
 
   return (
-    <div className="flex items-center gap-1 rounded-md border border-zinc-300 p-0.5 text-xs">
+    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-1 rounded-md border border-zinc-300 bg-white p-0.5 text-xs shadow-md">
       <button
         type="button"
         onClick={() => setDensity("comfortable")}
@@ -43,9 +43,9 @@ export default function DensityToggle() {
             ? "bg-zinc-800 text-white"
             : "text-zinc-600 hover:bg-zinc-100"
         }`}
-        title="Компактный режим (для ноутбука)"
+        title="Компактный режим (для телефона)"
       >
-        Ноутбук
+        Телефон
       </button>
     </div>
   );
