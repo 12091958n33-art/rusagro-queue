@@ -17,7 +17,7 @@ export default async function QueuePage({
     <div className="mx-auto max-w-4xl px-4 py-10">
       <AutoRefresh />
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold text-zinc-900">
+        <h1 className="text-2xl font-extrabold uppercase tracking-tight text-zinc-900">
           Табло очереди — {date}
         </h1>
         <DateForm action="/queue" date={date} />

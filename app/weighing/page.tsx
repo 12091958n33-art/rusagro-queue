@@ -16,7 +16,7 @@ export default async function WeighingPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold text-zinc-900">
+        <h1 className="text-2xl font-extrabold uppercase tracking-tight text-zinc-900">
           Весовая — {date}
         </h1>
         <DateForm action="/weighing" date={date} />

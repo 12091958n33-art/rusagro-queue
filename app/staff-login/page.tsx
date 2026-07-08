@@ -10,7 +10,7 @@ export default async function StaffLoginPage({
 
   return (
     <div className="mx-auto max-w-sm px-4 py-16">
-      <h1 className="text-xl font-bold text-zinc-900">Вход для сотрудников</h1>
+      <h1 className="text-xl font-extrabold uppercase tracking-tight text-zinc-900">Вход для сотрудников</h1>
       <p className="mt-1 text-sm text-zinc-600">
         Введите PIN-код, чтобы попасть в диспетчерскую или на весовую.
       </p>
@@ -38,7 +38,7 @@ export default async function StaffLoginPage({
         </div>
         <button
           type="submit"
-          className="w-full rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800"
+          className="w-full rounded-md bg-[#2a418d] px-4 py-2 text-sm font-bold uppercase tracking-tight text-white hover:bg-[#1d2f66]"
         >
           Войти
         </button>

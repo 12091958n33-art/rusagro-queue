@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { STAFF_AUTH_COOKIE, staffAuthToken } from "@/app/lib/auth";
 import { staffLogout } from "@/app/lib/actions";
+import BrandBadge from "@/app/components/BrandBadge";
 
 const publicLinks = [
   { href: "/", label: "Главная" },
@@ -22,15 +23,23 @@ export default async function Header() {
   return (
     <header className="border-b border-zinc-200 bg-white">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
-        <Link href="/" className="text-lg font-bold text-green-800">
-          Русагро · Приём свёклы
+        <Link href="/" className="flex items-center gap-2">
+          <BrandBadge className="h-8 w-8" />
+          <span className="flex flex-col leading-none">
+            <span className="text-lg font-extrabold uppercase tracking-tight text-zinc-900">
+              Русагро
+            </span>
+            <span className="text-[10px] font-medium uppercase tracking-wide text-zinc-500">
+              Приём свёклы
+            </span>
+          </span>
         </Link>
-        <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
           {publicLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-zinc-600 hover:text-green-800 hover:underline"
+              className="text-zinc-600 hover:text-[#2a418d] hover:underline"
             >
               {link.label}
             </Link>
@@ -40,7 +49,7 @@ export default async function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-zinc-600 hover:text-green-800 hover:underline"
+                className="text-zinc-600 hover:text-[#2a418d] hover:underline"
               >
                 {link.label}
               </Link>

@@ -26,14 +26,14 @@ export default async function AdminPage({
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-2xl font-bold text-zinc-900">
+        <h1 className="text-2xl font-extrabold uppercase tracking-tight text-zinc-900">
           Диспетчер — {date}
         </h1>
         <DateForm action="/admin" date={date} />
       </div>
 
       <section className="mt-8">
-        <h2 className="text-lg font-semibold text-zinc-800">
+        <h2 className="text-lg font-extrabold uppercase tracking-tight text-zinc-800">
           Слоты на {date}
         </h2>
 
@@ -77,7 +77,7 @@ export default async function AdminPage({
           </div>
           <button
             type="submit"
-            className="rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800"
+            className="rounded-md bg-[#2a418d] px-4 py-2 text-sm font-bold uppercase tracking-tight text-white hover:bg-[#1d2f66]"
           >
             Добавить слот
           </button>
@@ -116,7 +116,7 @@ export default async function AdminPage({
       </section>
 
       <section className="mt-10">
-        <h2 className="text-lg font-semibold text-zinc-800">
+        <h2 className="text-lg font-extrabold uppercase tracking-tight text-zinc-800">
           Все заявки на {date}
         </h2>
 

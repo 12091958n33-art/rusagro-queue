@@ -15,7 +15,7 @@ export default async function BookPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-zinc-900">
+      <h1 className="text-2xl font-extrabold uppercase tracking-tight text-zinc-900">
         Запись на время сдачи свёклы
       </h1>
       <p className="mt-1 text-sm text-zinc-600">
@@ -57,7 +57,7 @@ export default async function BookPage({
             {availableSlots.map((slot, i) => (
               <label
                 key={slot.id}
-                className="flex items-center justify-between rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm hover:border-green-600"
+                className="flex items-center justify-between rounded-md border border-zinc-200 bg-white px-4 py-3 text-sm hover:border-[#2a418d]"
               >
                 <span className="flex items-center gap-3">
                   <input
@@ -134,7 +134,7 @@ export default async function BookPage({
 
           <button
             type="submit"
-            className="w-full rounded-md bg-green-700 px-4 py-3 text-white font-medium hover:bg-green-800"
+            className="w-full rounded-md bg-[#2a418d] px-4 py-3 text-white font-bold uppercase tracking-tight hover:bg-[#1d2f66]"
           >
             Забронировать слот
           </button>

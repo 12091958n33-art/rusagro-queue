@@ -6,7 +6,7 @@ export default function WalkinPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-zinc-900">Живая очередь</h1>
+      <h1 className="text-2xl font-extrabold uppercase tracking-tight text-zinc-900">Живая очередь</h1>
       <p className="mt-1 text-sm text-zinc-600">
         Запись без предварительной брони на сегодня, {date}. Вы встанете в
         конец текущей очереди.
@@ -71,7 +71,7 @@ export default function WalkinPage() {
 
         <button
           type="submit"
-          className="w-full rounded-md bg-green-700 px-4 py-3 text-white font-medium hover:bg-green-800"
+          className="w-full rounded-md bg-[#2a418d] px-4 py-3 text-white font-bold uppercase tracking-tight hover:bg-[#1d2f66]"
         >
           Встать в очередь
         </button>

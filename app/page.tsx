@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-      <h1 className="text-3xl font-bold text-zinc-900">
+      <h1 className="text-3xl font-extrabold uppercase tracking-tight text-zinc-900">
         Запись в очередь на приём свёклы
       </h1>
       <p className="mt-3 text-zinc-600">
@@ -13,9 +13,9 @@ export default function Home() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         <Link
           href="/book"
-          className="rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:border-green-600 hover:shadow-md"
+          className="rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:border-[#2a418d] hover:shadow-md"
         >
-          <div className="text-xl font-semibold text-green-800">
+          <div className="text-xl font-bold uppercase tracking-tight text-[#2a418d]">
             Записаться на время
           </div>
           <p className="mt-2 text-sm text-zinc-600">
@@ -25,9 +25,9 @@ export default function Home() {
 
         <Link
           href="/walkin"
-          className="rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:border-green-600 hover:shadow-md"
+          className="rounded-xl border border-zinc-200 bg-white p-8 shadow-sm transition hover:border-[#2a418d] hover:shadow-md"
         >
-          <div className="text-xl font-semibold text-green-800">
+          <div className="text-xl font-bold uppercase tracking-tight text-[#2a418d]">
             Встать в живую очередь
           </div>
           <p className="mt-2 text-sm text-zinc-600">
