@@ -2,7 +2,36 @@
 
 import { prisma } from "@/app/lib/db";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { addMinutes, SLOT_DURATION_MINUTES, type EntryStatus } from "@/app/lib/types";
+import { STAFF_AUTH_COOKIE, staffAuthToken } from "@/app/lib/auth";
+
+export async function staffLogin(formData: FormData) {
+  const pin = str(formData, "pin");
+  const next = str(formData, "next") || "/admin";
+
+  if (!pin || pin !== process.env.STAFF_PIN) {
+    redirect(`/staff-login?error=1&next=${encodeURIComponent(next)}`);
+  }
+
+  const cookieStore = await cookies();
+  cookieStore.set(STAFF_AUTH_COOKIE, staffAuthToken(), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 30,
+    path: "/",
+  });
+
+  redirect(next);
+}
+
+export async function staffLogout() {
+  const cookieStore = await cookies();
+  cookieStore.delete(STAFF_AUTH_COOKIE);
+  redirect("/");
+}
 
 function str(formData: FormData, key: string): string {
   const value = formData.get(key);
