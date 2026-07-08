@@ -9,6 +9,7 @@ const publicLinks = [
   { href: "/book", label: "Записаться на время" },
   { href: "/walkin", label: "Живая очередь" },
   { href: "/queue", label: "Табло очереди" },
+  { href: "/contacts", label: "Контакты" },
 ];
 
 const staffLinks = [
