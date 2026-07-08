@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Slot {
+  id        String       @id @default(cuid())
+  date      String
+  startTime String
+  endTime   String
+  capacity  Int
+  entries   QueueEntry[]
+
+  @@unique([date, startTime])
+  @@index([date])
+}
+
+model QueueEntry {
+  id               String    @id @default(cuid())
+  type             String
+  date             String
+  supplierName     String
+  phone            String
+  vehiclePlate     String
+  volumeTons       Float
+  notes            String?
+  status           String    @default("CONFIRMED")
+  actualWeightTons Float?
+  createdAt        DateTime  @default(now())
+  slotId           String?
+  slot             Slot?     @relation(fields: [slotId], references: [id])
+
+  @@index([date])
+  @@index([slotId])
+}
