@@ -1,4 +1,4 @@
-const MAP_QUERY = "Тамбовская область, рп Знаменка, Кирпичная улица, 2";
+const MAP_QUERY = "Знаменский сахарный завод, Тамбовская область, рп Знаменка, Рабочая улица, 2";
 
 export default function ContactsPage() {
   return (
@@ -18,7 +18,7 @@ export default function ContactsPage() {
           <div>
             <div className="text-xs uppercase text-zinc-500">Адрес</div>
             <div className="text-zinc-800">
-              393401, Тамбовская область, р.п. Знаменка
+              393401, Тамбовская область, р.п. Знаменка, ул. Рабочая, 2
             </div>
           </div>
           <div>
