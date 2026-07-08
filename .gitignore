@@ -36,11 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify
+.netlify
+
+# debug logs
+tailwindcss-*.log
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
-/app/generated/prisma
 /prisma/dev.db
 /prisma/dev.db-journal
 /dev.db
