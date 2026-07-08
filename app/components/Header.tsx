@@ -17,7 +17,7 @@ const staffLinks = [
 
 export default async function Header() {
   const cookieStore = await cookies();
-  const isStaff = cookieStore.get(STAFF_AUTH_COOKIE)?.value === staffAuthToken();
+  const isStaff = cookieStore.get(STAFF_AUTH_COOKIE)?.value === (await staffAuthToken());
 
   return (
     <header className="border-b border-zinc-200 bg-white">

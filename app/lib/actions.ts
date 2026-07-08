@@ -16,7 +16,7 @@ export async function staffLogin(formData: FormData) {
   }
 
   const cookieStore = await cookies();
-  cookieStore.set(STAFF_AUTH_COOKIE, staffAuthToken(), {
+  cookieStore.set(STAFF_AUTH_COOKIE, await staffAuthToken(), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
